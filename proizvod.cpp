@@ -22,7 +22,7 @@ int y (float Y[], int N, float X[])
 int p (float P[], int N, float dx, float X[])
 {
 	int i;
-	for (int i = 0; i < N; i++) {	
+	for (int i = 0; i < N; i++) {
 		P[i] = (sin(X[i] + dx) - sin(X[i] - dx))/(2 * dx);
 	}
 }
@@ -47,14 +47,14 @@ int main () {
 	ofstream datafile1;
 	datafile1.open ("data1.txt");
 	for (int i = 0; i < N; i++) {
-	datafile1 << X[i] << '\t' << Y[i] << endl;
+		datafile1 << X[i] << '\t' << Y[i] << endl;
 	}
 	datafile1.close();
 	
 	ofstream datafile2;
 	datafile2.open ("data2.txt");
 	for (int i = 0; i < N; i++) {
-    datafile2 << X[i] << '\t' << P[i] << endl;
+		datafile2 << X[i] << '\t' << P[i] << endl;
 	}
 	datafile2.close();
 
