@@ -1,3 +1,4 @@
 set term qt
-plot 'data1.txt' w l, 'data2.txt' w l
+plot 'data1.txt' with lines, 'data2.txt' with points
+set pointsize 2
 pause mouse button1,keypress
