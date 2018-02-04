@@ -82,7 +82,7 @@ int main () {
 	ofstream pl;
 	pl.open ("plot.graph");
 	pl << "set term qt" << endl;
-	pl << "plot 'data1.txt' with lines, 'data2.txt' 1:2 with points" << endl; // Строим грфик и отображаем на графике точку, в которой вычислили производную
+	pl << "plot 'data1.txt' with lines, 'data2.txt' with points" << endl; // Строим грфик и отображаем на графике точку, в которой вычислили производную
 	pl << "set pointsize 2" << endl;
 	pl << "pause mouse button1,keypress"<< endl; 
 	pl.close();
