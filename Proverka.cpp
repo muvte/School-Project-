@@ -49,7 +49,7 @@ int main () {
 	double X[N];  
 	double Y[N];  
 	double P[N];
-	
+	cout << "1.y=sin(x) 2.y=sin(2x) 3.y=x*cos(x) 4.y=x^2 5.y=x^3" << "\n";
 	cout << "Выберите функцию." << "\n";
 	cin >> a;
 	double(*pfunc)(double); // Объявляем указатель
@@ -66,9 +66,11 @@ int main () {
 	for (int i = 0; i < N; i++) { // Строим массив точек абсцисс функции
 		X[i] = x1 + (x2 - x1)/(N-1)*i;
 	}
-	for (int i = 0; i < N; i++) { // Строим массив точек ординат функции
+	for (int i = 0; i < N; i++) { // Строим массив точек ординат функции и ординат производной
 		Y[i] = (*pfunc)(X[i]);
+		P[i] = gradient(pfunc, x0, dx);
 	}
+	
 	cout << "На какой абсциссе посчитать производную?" << "\n";;
 	cin >> x0;
 	p = gradient(pfunc, x0, dx);
@@ -76,21 +78,22 @@ int main () {
 	
 	ofstream datafile1;
 	datafile1.open ("data1.txt");
-	for (int i = 0; i < N; i++) {
+	for (i = 0; i < N; i++) {
 		datafile1 << X[i] << "\t" << Y[i] << endl;
 	}
 	datafile1.close();
 	
 	ofstream datafile2; // Записываем в файл точку, для выделения места в котором вычислили производную
 	datafile2.open ("data2.txt");
-	datafile2 << x0 << "\t" << Y[x0] << endl;
+	for (i = 0; i < N; i++) {
+		datafile2 << X[i] << "\t" << Y[i] << "\n";
+	}
 	datafile2.close();
 	
 	ofstream pl;
 	pl.open ("plot.graph");
 	pl << "set term qt" << endl;
-	pl << "plot 'data1.txt' with lines, 'data2.txt' with points" << endl; // Строим грфик и отображаем на графике точку, в которой вычислили производную
-	pl << "set pointsize 2" << endl;
+	pl << "plot 'data1.txt' w l, 'data2.txt' w l" << endl; // Строим грфик и отображаем на графике точку, в которой вычислили производную
 	pl << "pause mouse button1,keypress"<< endl; 
 	pl.close();
 
