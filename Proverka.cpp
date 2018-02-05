@@ -11,7 +11,7 @@ double f1 (double x)
 
 double f2 (double x)
 {
-	return sin(x * x);
+	return sin(2 * x);
 }
 
 double f3 (double x)
@@ -46,8 +46,10 @@ int main () {
 	double x2; 
 	cout << "Поставьте границы функции x1 и x2" << "\n" << "x1 = ";
 	cin >> x1;
+	x1 = 0;
 	cout << "x2 = ";
 	cin >> x2;
+	x2 = pi;
 	
 	double X[N];
 	double Y[N];
@@ -59,7 +61,8 @@ int main () {
 	if (a == 1)  // Смотрим к какой фукции подходит а
 		pfunc = f1;
 	if (a == 2) 
-		pfunc = f2;if (a == 3)
+		pfunc = f2;
+	if (a == 3)
 		pfunc = f3;
 	if (a == 4) 
 		pfunc = f4;
