@@ -46,10 +46,8 @@ int main () {
 	double x2; 
 	cout << "Поставьте границы функции x1 и x2" << "\n" << "x1 = ";
 	cin >> x1;
-	x1 = 0;
 	cout << "x2 = ";
 	cin >> x2;
-	x2 = pi;
 	
 	double X[N];
 	double Y[N];
@@ -71,12 +69,10 @@ int main () {
 	for (i = 0; i < N; i++) { // Строим массив точек абсцисс функции
 		X[i] = x1 + (x2 - x1)/(N-1)*i;
 	}
-	cout << (*pfunc)(X[1]);
-	cout << ((*pfunc)(X[1] + dx) - (*pfunc)(X[1] - dx))/(2 * dx);
 	
 	for (i = 0; i < N; i++) { // Строим массив точек ординат функции и ординат производной
 		Y[i] = (*pfunc)(X[i]);
-		P[i] = ((*pfunc)(X[i] + dx) - (*pfunc)(X[i] - dx))/(2 * dx);
+		P[i] = gradient (*pfunc, X[i], dx);
 	}
 	
 	ofstream datafile1;
