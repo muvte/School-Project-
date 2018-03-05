@@ -6,9 +6,17 @@
 using namespace std;
 void gradient (double(*pfunc)(double), double X0 [], double Xout[], int n, double dx)
 {	
-	int i;
+	int i, j;
+	double X1[n-1];
+	double X2[n-1];
 	for (i = 0; i < n; i++) {
-		Xout[i] = (pfunc(X0[i] + dx) - pfunc(X0[i] - dx)) / 2 * dx;
+		for (j = 0; j < n; j++) {
+			X1[i] = X0[i];
+			X2[i] = X0[i];
+		}
+		X1[i] = X0[i] + dx;
+		X2[i] = X0[i] - dx;
+		Xout[i] = (pfunc(X1[n-1]) - pfunc(X2[n-1])) / (2 * dx);
 	}
 }
 int main ()
