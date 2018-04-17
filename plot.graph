@@ -1,3 +1,6 @@
-set term qt
-splot 'data1.txt' w l, 'data2.txt' with points lw 2 lt rgb 'red'
-pause mouse button1,keypress
+set samples 30; set isosamples 30
+set hidden3d
+set pm3d
+set surface
+set view 50,220
+splot 'data2.txt' with points lw 5 , 'data1.txt' w l ls 1
